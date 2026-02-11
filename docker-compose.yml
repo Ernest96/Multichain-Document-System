@@ -1,0 +1,21 @@
+services:
+  swg_api:
+    build:
+      context: .
+      dockerfile: swg_api/Dockerfile
+    container_name: swg_api
+    env_file:
+      - ./config/.env
+    ports:
+      - "3001:3001"
+
+  swg:
+    build:
+      context: .
+      dockerfile: swg/Dockerfile
+    container_name: swg
+    depends_on:
+      - swg_api
+    ports:
+      - "3000:3000"
+

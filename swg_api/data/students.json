@@ -1,0 +1,24 @@
+{
+  "students": [
+    {
+      "id": "stu-001",
+      "name": "Ana Popescu",
+      "group": "TI-001"
+    },
+    {
+      "id": "stu-002",
+      "name": "Irina Rusu",
+      "group": "TI-001"
+    },
+    {
+      "id": "stu-003",
+      "name": "Maria Ionescu",
+      "group": "TI-002"
+    },
+    {
+      "id": "stu-004",
+      "name": "Ion Moraru",
+      "group": "TI-002"
+    }
+  ]
+}
