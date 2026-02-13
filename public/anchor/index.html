@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anchor Document</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="../images/favicon.png" />
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <script src="../js/libraries/ethers.js"></script>
+</head>
+
+<body>
+  <main class="container">
+    <nav class="breadcrumb">
+      <a href="../">Home</a>
+      <span class="separator">/</span>
+      <span class="current">Admin</span>
+    </nav>
+
+    <header class="step">
+      <div class="step-left">
+        <h1 class="h1">Anchor a document</h1>
+        <p class="lead">
+          Upload a document file. The hash is computed locally in your browser and anchored on-chain.
+        </p>
+      </div>
+
+      <div class="step-right">
+        <img src="../images/anchor.png" class="step-img" alt="Anchor illustration" />
+      </div>
+    </header>
+
+    <section>
+      <div class="row-text">
+        <h2 class="h2">1) Upload & compute hash</h2>
+        <p class="muted">
+          We compute SHA-256 hash for anchoring.
+        </p>
+
+        <div class="form-grid">
+          <div class="field">
+            <label class="label">Document file</label>
+            <input id="fileInput" class="input" type="file" />
+            <div id="fileMeta" class="hint"></div>
+          </div>
+
+          <div class="field">
+            <label class="label">Computed hash </label>
+            <input id="hashOut" class="input mono" type="text" placeholder="0x..." readonly />
+          </div>
+
+          <div class="field">
+            <button id="btnCopy" class="btn" type="button">Copy hash</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="row-text">
+        <h2 class="h2">2) Anchor on chains</h2>
+        <p class="muted">Admin anchors the hash. Users will verify &amp; approve later.</p>
+
+        <div class="chains-grid">
+          <div class="chain-card">
+            <div class="chain-head">
+              <div>
+                <div class="chain-title">Ethereum (Sepolia)</div>
+              </div>
+              <span id="ethBadge" class="badge neutral">Not connected</span>
+            </div>
+
+            <div class="chain-actions">
+              <button id="btnEthConnect" class="btn" type="button">Connect MetaMask</button>
+              <button id="btnEthAnchor" class="btn primary" type="button" disabled>
+                Anchor on Ethereum
+              </button>
+            </div>
+
+            <div class="chain-log mono" id="ethLog">—</div>
+          </div>
+
+          <div class="chain-card">
+            <div class="chain-head">
+              <div>
+                <div class="chain-title">Solana (Devnet)</div>
+              </div>
+              <span id="solBadge" class="badge neutral">Not connected</span>
+            </div>
+
+            <div class="chain-actions">
+              <button id="btnSolConnect" class="btn" type="button">Connect Phantom</button>
+              <button id="btnSolAnchor" class="btn primary" type="button" disabled>
+                Anchor on Solana
+              </button>
+            </div>
+
+            <div class="chain-log mono" id="solLog">—</div>
+          </div>
+        </div>
+
+        <div id="globalStatus" class="status"></div>
+      </div>
+    </section>
+  </main>
+
+  
+  <script src="../js/anchor.js" type="module"></script>
+</body>
+</html>

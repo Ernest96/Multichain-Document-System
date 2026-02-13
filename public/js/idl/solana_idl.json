@@ -1,0 +1,246 @@
+{
+  "address": "5tjey2DhszrAfN8u6CRxZ4RwyfkV3fXpqyXxVj7prtNo",
+  "metadata": {
+    "name": "document_registry",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "anchor_document",
+      "discriminator": [
+        87,
+        8,
+        127,
+        44,
+        152,
+        147,
+        82,
+        183
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "doc",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  111,
+                  99
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "doc_hash"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "doc_hash",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "approve_document",
+      "discriminator": [
+        104,
+        186,
+        69,
+        12,
+        46,
+        70,
+        122,
+        230
+      ],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "doc",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  111,
+                  99
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "doc_hash"
+              }
+            ]
+          }
+        },
+        {
+          "name": "approval",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  112,
+                  112,
+                  114,
+                  111,
+                  118,
+                  97,
+                  108
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "doc_hash"
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "doc_hash",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "ApprovalAccount",
+      "discriminator": [
+        169,
+        84,
+        59,
+        29,
+        166,
+        124,
+        3,
+        234
+      ]
+    },
+    {
+      "name": "DocumentAccount",
+      "discriminator": [
+        214,
+        207,
+        107,
+        111,
+        6,
+        191,
+        142,
+        208
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "InvalidDocHash",
+      "msg": "Invalid doc hash (all zeros)."
+    },
+    {
+      "code": 6001,
+      "name": "NotAdmin",
+      "msg": "Only admin can anchor documents."
+    },
+    {
+      "code": 6002,
+      "name": "DocHashMismatch",
+      "msg": "Document hash mismatch."
+    }
+  ],
+  "types": [
+    {
+      "name": "ApprovalAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "doc_hash",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "approved_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DocumentAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "doc_hash",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "anchored_by",
+            "type": "pubkey"
+          },
+          {
+            "name": "anchored_at",
+            "type": "i64"
+          }
+        ]
+      }
+    }
+  ]
+}

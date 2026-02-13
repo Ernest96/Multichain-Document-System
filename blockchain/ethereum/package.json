@@ -18,5 +18,8 @@
   "type": "module",
   "directories": {
     "test": "test"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.4.0"
   }
 }

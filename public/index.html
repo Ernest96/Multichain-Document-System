@@ -1,1 +1,119 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="icon" href="/favicon.ico"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><meta name="description" content="Web site created using create-react-app"/><link rel="apple-touch-icon" href="/logo192.png"/><link rel="manifest" href="/manifest.json"/><title>React App</title><script defer="defer" src="/static/js/main.534efa79.js"></script><link href="/static/css/main.f855e6bc.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div></body></html>
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Multichain Documents Approval</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="images/favicon.png"/>
+</head>
+
+<body>
+    <main class="container">
+
+        <header class="step">
+            <div class="step-left">
+                <div class="pill">DEMO #2</div>
+                <h1 class="h1">Multichain Documents Approval System</h1>
+                <p class="lead">
+                    Anchor document hashes across Ethereum, Solana and Cardano. Verify integrity and record user
+                    approvals.
+                </p>
+
+            </div>
+
+            <div class="step-right">
+                <img src="images/system.png" class="step-img" />
+            </div>
+        </header>
+
+        <!-- SECTION 1 -->
+        <section class="step">
+            <div class="row-text">
+                <h2 class="h2">1) Anchor a document</h2>
+                <p class="muted">
+                    Upload a file (PDF/JSON/TXT), compute its SHA-256 hash locally in the browser, then anchor the hash
+                    on-chain. (Admin only)
+                </p>
+                <a class="btn primary mt-2" href="anchor/">Anchor Document</a>
+            </div>
+
+            <div class="row-visual">
+                <img class="step-img" src="images/anchor.png" />
+            </div>
+        </section>
+
+        <!-- SECTION 2 -->
+        <section class="step reverse">
+            <div class="row-visual">
+                <img class="step-img" src="images/verify.png" />
+            </div>
+            <div class="row-text">
+                <h2 class="h2">2) Verify a document</h2>
+                <p class="muted">
+                    Recompute the hash from the uploaded document and compare it with anchored hashes retrieved from
+                    each chain.
+                </p>
+
+                <a class="btn primary mt-2" href="/verify">Verify Document</a>
+            </div>
+
+
+        </section>
+
+        <section class="step">
+            <div class="row-text">
+                <h2 class="h2">3) Approve a document</h2>
+                <p class="muted">
+                    Users record an acknowledgment on a selected chain. One approval is enough.
+                </p>
+                <div class="approve-grid">
+                    <a class="approve-item" href="/approve-eth.html">
+                        <div class="approve-top">
+                            <span class="tag">Ethereum</span><img class="chain-img" src="images/eth.png" />
+                        </div>
+                        <div class="approve-title">Use Ethereum</div>
+                        <div class="approve-desc">Sign with a EVM Wallet.</div>
+                        <div class="approve-cta">Open →</div>
+                    </a>
+
+                    <a class="approve-item" href="/approve-sol.html">
+                        <div class="approve-top">
+                            <span class="tag">Solana</span><img class="chain-img" src="images/solana.webp" />
+                        </div>
+                        <div class="approve-title">Use Solana</div>
+                        <div class="approve-desc">Sign with Phantom.</div>
+                        <div class="approve-cta">Open →</div>
+                    </a>
+
+                    <a class="approve-item" href="/approve-cardano.html">
+                        <div class="approve-top">
+                            <span class="tag">Cardano</span><img class="chain-img" src="images/cardano.png" />
+                        </div>
+                        <div class="approve-title">Use Cardano</div>
+                        <div class="approve-desc">Sign with Lace.</div>
+                        <div class="approve-cta">Open →</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row-visual">
+                <img class="step-img" src="images/approve.png" />
+            </div>
+        </section>
+
+
+        <footer class="footer">
+            <div>© Ernest Bîtca</div>
+        </footer>
+
+    </main>
+</body>
+
+</html>

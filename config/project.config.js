@@ -4,12 +4,13 @@ export const CONFIG = {
   ethereum: {
     rpcUrl: "https://sepolia.infura.io/v3/bd24e72571644461944188b92dfb02c5",
     privateKey: process.env.ETH_PRIVATE_KEY,
-    contractAddress: "0x485f3119D4C0Be894A2220865ACc9a30861d3792",
+    contractAddress: "0x01804d20f5376080DF70C05eFd81F1d517645d0c",
+    chainIdHex: "0xaa36a7"
   },
   solana: {
     rpcUrl: "https://api.devnet.solana.com",
-    programId: "9cdrcYFonADBKCEgLFJfkTMBYAYUzdG61h58hMx1nnvP",
-    idlSrc: "../solana/target/idl/exam_grade_storage.json",
+    programId: "5tjey2DhszrAfN8u6CRxZ4RwyfkV3fXpqyXxVj7prtNo",
+    idlSrc: "../blockchain/solana/target/idl/document_registry.json",
     idlDestName: "solana_idl.json",
   },
   security: {

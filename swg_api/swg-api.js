@@ -4,7 +4,6 @@ import { CONFIG } from "../config/project.config.js";
 
 import express from "express";
 import cookieParser from "cookie-parser";
-import studentsRouter from "./routes/students.routes.js";
 import authRouter from "./routes/auth.routes.js";
 import { corsMiddleware } from "./middleware/cors.middleware.js";
 
@@ -17,7 +16,6 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(corsMiddleware);
-app.use("/api/students", studentsRouter);
 app.use("/auth", authRouter);
 
 // Home route
