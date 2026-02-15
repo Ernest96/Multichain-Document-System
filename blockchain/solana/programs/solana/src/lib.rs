@@ -14,7 +14,6 @@ pub mod document_registry {
         // admin only
         require_keys_eq!(ctx.accounts.authority.key(), ADMIN, RegistryError::NotAdmin);
 
-
         let doc = &mut ctx.accounts.doc;
         doc.doc_hash = doc_hash;
         doc.anchored_by = ctx.accounts.authority.key();
@@ -40,7 +39,6 @@ pub mod document_registry {
     }
 }
 
-/* ---------------- Accounts ---------------- */
 
 #[account]
 pub struct DocumentAccount {
@@ -62,7 +60,6 @@ impl ApprovalAccount {
     pub const LEN: usize = 8 + 32 + 32 + 8;
 }
 
-/* ---------------- Contexts ---------------- */
 
 #[derive(Accounts)]
 #[instruction(doc_hash: [u8; 32])]
@@ -105,8 +102,6 @@ pub struct ApproveDocument<'info> {
 
     pub system_program: Program<'info, System>,
 }
-
-/* ---------------- Errors ---------------- */
 
 #[error_code]
 pub enum RegistryError {

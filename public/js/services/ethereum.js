@@ -30,7 +30,9 @@ export class EthereumService {
     this.evm = null;
     this.provider = null;
     this.signer = null;
-    this.contract = null;
+
+    const rp = new ethers.JsonRpcProvider(ETH_RPC_URL);
+    this.contract = new ethers.Contract(ETH_CONTRACT_ADDRESS, ABI, rp);
   }
 
   async ensureNetwork() {

@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -20,19 +21,19 @@
     <nav class="breadcrumb">
       <a href="../">Home</a>
       <span class="separator">/</span>
-      <span class="current">Anchor</span>
+      <span class="current">Verify</span>
     </nav>
 
     <header class="step">
       <div class="step-left">
-        <h1 class="h1">Anchor a document</h1>
+        <h1 class="h1">Verify a document</h1>
         <p class="lead">
-          Upload a document file. The hash is computed locally in your browser and anchored on-chain.
+          Upload a document file. Verify if it is anchored on one of the blockchains.
         </p>
       </div>
 
       <div class="step-right">
-        <img src="../images/anchor.png" class="step-img" alt="Anchor illustration" />
+        <img src="../images/verify.png" class="step-img" alt="Anchor illustration" />
       </div>
     </header>
 
@@ -64,52 +65,43 @@
       <div class="divider"></div>
 
       <div class="row-text">
-        <h2 class="h2">2) Anchor on chains</h2>
-        <p class="muted">Admin anchors the hash. Users will verify &amp; approve later.</p>
+        <h2 class="h2">2) Verify anchor status</h2>
+        <p class="muted">Verify if a document was anchored by the admin on one of the chains.</p>
 
-        <div class="chains-grid">
-          <div class="chain-card">
-            <div class="chain-head">
-              <div>
-                <div class="chain-title">Ethereum (Sepolia)</div>
-              </div>
-              <span id="ethBadge" class="badge neutral">Not connected</span>
+        <div class="approve-grid">
+          <div class="approve-item" >
+            <div class="approve-top">
+              <span id="ethBadge"  class="badge">Unknown</span><img class="chain-img" src="../images/eth.png" />
             </div>
-
-            <div class="chain-actions">
-              <button id="btnEthConnect" class="btn" type="button">Connect Ethereum</button>
-              <button id="btnEthAnchor" class="btn primary" type="button" disabled>
-                Anchor on Ethereum
-              </button>
-            </div>
-
-            <div class="chain-log mono" id="ethLog">—</div>
+            <div class="approve-title">Ethereum status</div>
           </div>
 
-          <div class="chain-card">
-            <div class="chain-head">
-              <div>
-                <div class="chain-title">Solana (Devnet)</div>
-              </div>
-              <span id="solBadge" class="badge neutral">Not connected</span>
+          <div class="approve-item">
+            <div class="approve-top">
+              <span id="solBadge"  class="badge">Unknown</span><img class="chain-img" src="../images/solana.webp" />
             </div>
+            <div class="approve-title">Solana status</div>
+          </div>
 
-            <div class="chain-actions">
-              <button id="btnSolConnect" class="btn" type="button">Connect Solana</button>
-              <button id="btnSolAnchor" class="btn primary" type="button" disabled>
-                Anchor on Solana
-              </button>
+          <div class="approve-item">
+            <div class="approve-top">
+              <span id="cardanoBadge"  class="badge">Unknown</span><img class="chain-img" src="../images/cardano.png" />
             </div>
-
-            <div class="chain-log mono" id="solLog">—</div>
+            <div class="approve-title">Cardano status</div>
           </div>
         </div>
+
+        <div class="mt-2">
+            <button class="btn primary" type="button" id="btnVerify" disabled>Verify</button>
+        </div>
+
 
       </div>
     </section>
   </main>
 
-  
-  <script src="../js/anchor.js" type="module"></script>
+
+  <script src="../js/verify.js" type="module"></script>
 </body>
+
 </html>

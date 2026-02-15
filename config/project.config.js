@@ -35,7 +35,7 @@ export const CONFIG = {
       base: {
         directives: {
           defaultSrc: ["'self'"],
-          scriptSrc: ["'self'"],
+          scriptSrc: ["'self'", "https://esm.sh"],
           imgSrc: ["'self'", "data:"],
           styleSrc: ["'self'", "https://fonts.googleapis.com"],
           fontSrc: ["'self'", "https://fonts.gstatic.com"],
@@ -45,6 +45,9 @@ export const CONFIG = {
         },
         connectSrc: [
           "https://sepolia.infura.io",
+          "https://api.devnet.solana.com",
+          "https://esm.sh",
+          "wss://api.devnet.solana.com/"
         ],
       },
       // route specific CSP
@@ -57,8 +60,8 @@ export const CONFIG = {
       // role specific CSP
       roles: {
         admin: {
-          connectAdd: ["https://api.devnet.solana.com", "https://esm.sh", "wss://api.devnet.solana.com/"],
-          scriptAdd: ["https://esm.sh"]
+          connectAdd: [],
+          scriptAdd: []
         },
       },
       // route + role specific CSP

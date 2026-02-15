@@ -1,3 +1,5 @@
+import { sha256FileHex } from "./crypto.js";
+
 export function getEvmProviders() {
     const out = [];
 
@@ -39,3 +41,22 @@ export async function pickEvmProvider() {
 
     return list[idx].provider;
 }
+
+export async function displayFileHash(selectedFile, fileMeta, hashOut) {
+  try {
+    if (!selectedFile) {
+      fileMeta.textContent = "Select a file first.";
+      return;
+    }
+
+    fileMeta.textContent = "Computing SHA-256…";
+    const hash = await sha256FileHex(selectedFile);
+
+    hashOut.value = hash;
+    fileMeta.textContent = `Hash computed ✅ (${selectedFile.name})`;
+
+
+  } catch (err) {
+    fileMeta.textContent = `Hash error: ${err?.message}`;
+  }
+};
