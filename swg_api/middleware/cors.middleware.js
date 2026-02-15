@@ -11,7 +11,7 @@ const DAPP_ORIGIN = `${CONFIG.swg.host}:${CONFIG.swg.port}`;
 export function corsMiddleware(req, res, next) {
   const origin = req.headers.origin;
 
-  if (origin == DAPP_ORIGIN || allowOriginsExtra.includes(origin)) {
+  if (DAPP_ORIGIN.includes(origin) || allowOriginsExtra.includes(origin)) {
     res.setHeader("Access-Control-Allow-Origin", origin);
     res.setHeader("Vary", "Origin");
     res.setHeader(
