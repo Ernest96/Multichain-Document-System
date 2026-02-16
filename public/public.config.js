@@ -9,6 +9,11 @@ export const CONFIG_PUBLIC = {
     "programId": "5tjey2DhszrAfN8u6CRxZ4RwyfkV3fXpqyXxVj7prtNo",
     "idlName": "solana_idl.json"
   },
+  "polygon": {
+    "rpcUrl": "https://rpc-amoy.polygon.technology",
+    "contractAddress": "0x3960073a8a747555C81975e841da2b5b85c39fdF",
+    "chainIdHex": "0x13882"
+  },
   "swgApi": {
     "origin": "http://localhost:3003"
   }

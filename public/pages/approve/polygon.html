@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Approve on Cardano</title>
+  <title>Approve on Polygon</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,6 +12,7 @@
 
   <link rel="icon" href="../../images/favicon.png" />
   <link rel="stylesheet" href="../../css/style.css" />
+  <script src="../../js/libraries/ethers.js"></script>
 
 </head>
 
@@ -20,20 +21,20 @@
     <nav class="breadcrumb">
       <a href="../../">Home</a>
       <span class="separator">/</span>
-      <span class="current">Approve on Cardano</span>
+      <span class="current">Approve on Polygon</span>
     </nav>
 
     <header class="step">
       <div class="step-left">
-        <h1 class="h1">Approve on Cardano</h1>
+        <h1 class="h1">Approve on Polygon</h1>
         <p class="lead">
-          Upload a document file. Approve it on Cardano.
+          Upload a document file. Approve it on Polygon.
         </p>
 
       </div>
 
       <div class="step-right">
-        <img src="../../images/approve-cardano.png" class="step-img" alt="Approve illustration" />
+        <img src="../../images/approve-Polygon.png" class="step-img" alt="Approve illustration" />
       </div>
     </header>
 
@@ -65,11 +66,11 @@
       <div class="divider"></div>
 
       <div class="row-text">
-        <h2 class="h2">2) Approve on Cardano</h2>
+        <h2 class="h2">2) Approve on Polygon</h2>
         <p class="muted">Approve and sign the transaction.</p>
 
         <div class="chain-actions mt-2">
-          <button id="btnCardanoConnect" class="btn" type="button">Connect Cardano</button>
+          <button id="btnPolConnect" class="btn" type="button">Connect Polygon</button>
           <button class="btn primary" type="button" id="btnApprove" disabled>Approve</button>
           <button class="btn primary" type="button" id="btnCheckSignature" disabled>Check signature</button>
         </div>
@@ -79,7 +80,7 @@
   </main>
 
 
-  <script src="../../js/approve_cardano.js" type="module"></script>
+  <script src="../../js/approve_polygon.js" type="module"></script>
 </body>
 
 </html>

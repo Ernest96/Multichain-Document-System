@@ -1,9 +1,9 @@
 import { CONFIG_PUBLIC } from "../../public.config.js";
 import { pickEvmProvider } from "./utils.js";
 
-const ETH_RPC_URL = CONFIG_PUBLIC.ethereum.rpcUrl;
-const ETH_CONTRACT_ADDRESS = CONFIG_PUBLIC.ethereum.contractAddress;
-const ETH_CHAIN_ID_HEX = CONFIG_PUBLIC.ethereum.chainIdHex;
+const POL_RPC_URL = CONFIG_PUBLIC.polygon.rpcUrl;
+const POL_CONTRACT_ADDRESS = CONFIG_PUBLIC.polygon.contractAddress;
+const POL_CHAIN_ID_HEX = CONFIG_PUBLIC.polygon.chainIdHex;
 
 const ABI = [
   "function anchorDocument(bytes32 docHash) external",
@@ -14,27 +14,27 @@ const ABI = [
 ];
 
 const CHAIN = {
-  key: "eth",
-  label: "Ethereum ",
-  chainIdHex: ETH_CHAIN_ID_HEX,
-  rpcUrl: ETH_RPC_URL,
-  contract: ETH_CONTRACT_ADDRESS,
+  key: "pol",
+  label: "Polygon",
+  chainIdHex: POL_CHAIN_ID_HEX,
+  rpcUrl: POL_RPC_URL,
+  contract: POL_CONTRACT_ADDRESS,
   addParams: {
-    chainId: ETH_CHAIN_ID_HEX,
-    chainName: "Ethereum ",
-    rpcUrls: [ETH_RPC_URL],
-    nativeCurrency: { name: "ETH", symbol: "ETH", decimals: 18 }
+    chainId: POL_CHAIN_ID_HEX,
+    chainName: "Polygon",
+    rpcUrls: [POL_RPC_URL],
+    nativeCurrency: { name: "POL", symbol: "POL", decimals: 18 }
   },
 };
 
-export class EthereumService {
+export class PolygonService {
   constructor() {
     this.evm = null;
     this.provider = null;
     this.signer = null;
 
-    const rp = new ethers.JsonRpcProvider(ETH_RPC_URL);
-    this.contract = new ethers.Contract(ETH_CONTRACT_ADDRESS, ABI, rp);
+    const rp = new ethers.JsonRpcProvider(POL_RPC_URL);
+    this.contract = new ethers.Contract(POL_CONTRACT_ADDRESS, ABI, rp);
   }
 
   async ensureNetwork() {
@@ -81,7 +81,7 @@ export class EthereumService {
     await this.evm.request({ method: "eth_requestAccounts" });
 
     this.contract = new ethers.Contract(
-      CONFIG_PUBLIC.ethereum.contractAddress,
+      CONFIG_PUBLIC.polygon.contractAddress,
       ABI,
       this.signer
     );

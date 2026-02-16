@@ -10,6 +10,11 @@ export default {
       type: "http",
       url: CONFIG.ethereum.rpcUrl,
       accounts: [CONFIG.ethereum.privateKey],
+    },
+    amoy: {
+      type: "http",
+      url: CONFIG.polygon.rpcUrl,
+      accounts: [CONFIG.polygon.privateKey],
     }
   },
 };

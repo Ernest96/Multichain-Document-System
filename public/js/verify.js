@@ -2,9 +2,11 @@ import { isValidHash } from "./services/crypto.js";
 import { displayFileHash } from "./services/utils.js";
 import { EthereumService } from "./services/ethereum.js";
 import { SolanaService } from "./services/solana.js";
+import { PolygonService } from "./services/polygon.js";
 
 const ethService = new EthereumService();
 const solService = new SolanaService();
+const polService = new PolygonService();
 
 // UI
 const fileInput = document.getElementById("fileInput");
@@ -21,8 +23,8 @@ const ethBadge = document.getElementById("ethBadge");
 // SOL
 const solBadge = document.getElementById("solBadge");
 
-// Cardano
-const cardanoBadge = document.getElementById("cardanoBadge");
+//POL
+const polygonBadge = document.getElementById("polygonBadge");
 
 function updateVerifyButton() {
     const hash = hashOut.value.trim();
@@ -39,11 +41,11 @@ function setBadge(badge, isAnchored) {
 function clearBadges() {
     ethBadge.className = "badge";
     solBadge.className = "badge";
-    cardanoBadge.className = "badge";
+    polygonBadge.className = "badge";
 
     ethBadge.textContent = "Uknown";
     solBadge.textContent = "Uknown";
-    cardanoBadge.textContent = "Uknown";
+    polygonBadge.textContent = "Uknown";
 }
 
 // select file
@@ -80,11 +82,11 @@ btnVerify.addEventListener("click", async () => {
 
         const isEthAnchored = await ethService.isAnchored(hash);
         const isSolAnchored = await solService.isAnchored(hash);
-        const isCardanoAnchored = true;
+        const isPolygonAnchored = await polService.isAnchored(hash);
 
         setBadge(ethBadge, isEthAnchored);
         setBadge(solBadge, isSolAnchored);
-        setBadge(cardanoBadge, isCardanoAnchored);
+        setBadge(polygonBadge, isPolygonAnchored);
     } catch (err) {
         alert("Error verifying anchor status");
         console.log(err.message);

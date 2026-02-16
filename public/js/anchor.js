@@ -2,9 +2,12 @@ import { isValidHash} from "./services/crypto.js";
 import { displayFileHash } from "./services/utils.js";
 import { EthereumService } from "./services/ethereum.js";
 import { SolanaService } from "./services/solana.js";
+import { PolygonService } from "./services/polygon.js";
+
 
 const ethService = new EthereumService();
 const solService = new SolanaService();
+const polService = new PolygonService();
 
 // UI
 const fileInput = document.getElementById("fileInput");
@@ -29,8 +32,16 @@ const btnSolAnchor = document.getElementById("btnSolAnchor");
 const solLog = document.getElementById("solLog");
 const solBadge = document.getElementById("solBadge");
 let solConnected = false;
-
 btnSolAnchor.disabled = true;
+
+// Pol
+const btnPolConnect = document.getElementById("btnPolConnect");
+const btnPolAnchor = document.getElementById("btnPolAnchor");
+const polLog = document.getElementById("polLog");
+const polBadge = document.getElementById("polBadge");
+let polConnected = false;
+
+btnPolAnchor.disabled = true;
 
 
 function getBadgeText(badgeType) {
@@ -64,6 +75,18 @@ function updateSolButton() {
   btnSolAnchor.disabled = !(solConnected && isValidHash(hash));
 }
 
+function setPolUI(message, badgeType = "neutral") {
+  polLog.textContent = message;
+  polBadge.className = `badge ${badgeType}`;
+  polBadge.textContent = getBadgeText(badgeType);
+}
+
+function updatePolButton() {
+  const hash = hashOut.value.trim();
+  btnPolAnchor.disabled = !(polConnected && isValidHash(hash));
+}
+
+
 
 // select file
 fileInput.addEventListener("change", async (e) => {
@@ -79,6 +102,7 @@ fileInput.addEventListener("change", async (e) => {
   await displayFileHash(selectedFile, fileMeta, hashOut);
   updateEthButton();
   updateSolButton();
+  updatePolButton();
 });
 
 
@@ -159,5 +183,41 @@ btnSolAnchor.addEventListener("click", async () => {
     setSolUI(`Anchored ✅\nSig: ${sig}`, "ok");
   } catch (err) {
     setSolUI(`Anchor error: ${err?.message}`, "warn");
+  }
+});
+
+btnPolConnect.addEventListener("click", async () => {
+  try {
+    setPolUI("Connecting Wallet…", "warn");
+
+    const addr = await polService.connect(); 
+    polConnected = true;
+
+    setPolUI(`Connected: ${addr}\n`, "ok");
+  } catch (err) {
+    polConnected = false;
+    setPolUI(`Connect error: ${err?.message}`, "warn");
+  } finally {
+    updatePolButton();
+  }
+});
+
+btnPolAnchor.addEventListener("click", async () => {
+  const hash = hashOut.value.trim();
+
+  try {
+    const isAnchored = await polService.isAnchored(hash);
+    if (isAnchored) {
+      setPolUI(`Document ${selectedFile?.name} already anchored`, "warn");
+      return;
+    }
+
+    setPolUI("Sending transaction…", "ok");
+
+    const tx = await polService.anchor(hash);
+
+    setPolUI(`Anchored ✅\nTx: ${tx.hash}`, "ok");
+  } catch (err) {
+    setPolUI(`Anchor error: ${err?.message}`, "warn");
   }
 });

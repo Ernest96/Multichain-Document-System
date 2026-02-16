@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: swg_api/Dockerfile
-    container_name: swg_api
+    container_name: swg_api_demo2
     env_file:
       - ./config/.env
     ports:
@@ -13,7 +13,7 @@ services:
     build:
       context: .
       dockerfile: swg/Dockerfile
-    container_name: swg
+    container_name: swg_demo2
     depends_on:
       - swg_api
     ports:

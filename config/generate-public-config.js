@@ -19,6 +19,11 @@ const PUBLIC_CONFIG = {
     programId: CONFIG.solana.programId,
     idlName: CONFIG.solana.idlDestName
   },
+  polygon: {
+    rpcUrl: CONFIG.polygon.rpcUrl,
+    contractAddress: CONFIG.polygon.contractAddress,
+    chainIdHex: CONFIG.polygon.chainIdHex
+  },
   swgApi: {
     origin: CONFIG.swgApi.origin,
   },

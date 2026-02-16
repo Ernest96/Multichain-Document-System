@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -103,13 +104,31 @@
 
             <div class="chain-log mono" id="solLog">—</div>
           </div>
+
+          <div class="chain-card">
+            <div class="chain-head">
+              <div>
+                <div class="chain-title">Polygon (Amoy)</div>
+              </div>
+              <span id="polBadge" class="badge neutral">Not connected</span>
+            </div>
+
+            <div class="chain-actions">
+              <button id="btnPolConnect" class="btn" type="button">Connect Polygon</button>
+              <button id="btnPolAnchor" class="btn primary" type="button" disabled>
+                Anchor on Polygon
+              </button>
+            </div>
+
+            <div class="chain-log mono" id="polLog">—</div>
+          </div>
         </div>
 
       </div>
     </section>
   </main>
 
-  
   <script src="../../js/anchor.js" type="module"></script>
 </body>
+
 </html>
