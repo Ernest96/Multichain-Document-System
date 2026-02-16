@@ -9,7 +9,7 @@ import { setSecurityHeaders } from "./middleware/policies.middleware.js";
 const app = express();
 const PORT = CONFIG.swg.port;
 
-const DAPP_ORIGIN = `${CONFIG.swg.host}:${CONFIG.swg.port}`;
+const DAPP_ORIGIN = CONFIG.swg.origin;
 
 app.use(express.json());
 app.use(cookieParser());

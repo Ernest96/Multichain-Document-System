@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Approve on Cardano</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="../../images/favicon.png" />
+  <link rel="stylesheet" href="../../css/style.css" />
+
+</head>
+
+<body>
+  <main class="container">
+    <nav class="breadcrumb">
+      <a href="../../">Home</a>
+      <span class="separator">/</span>
+      <span class="current">Approve on Cardano</span>
+    </nav>
+
+    <header class="step">
+      <div class="step-left">
+        <h1 class="h1">Approve on Cardano</h1>
+        <p class="lead">
+          Upload a document file. Approve it on Cardano.
+        </p>
+
+      </div>
+
+      <div class="step-right">
+        <img src="../../images/approve-cardano.png" class="step-img" alt="Approve illustration" />
+      </div>
+    </header>
+
+    <section>
+      <div class="row-text">
+        <h2 class="h2">1) Upload & compute hash</h2>
+        <p class="muted">
+          We compute SHA-256 hash for anchoring.
+        </p>
+
+        <div class="form-grid">
+          <div class="field">
+            <label class="label">Document file</label>
+            <input id="fileInput" class="input" type="file" />
+            <div id="fileMeta" class="hint"></div>
+          </div>
+
+          <div class="field">
+            <label class="label">Computed hash </label>
+            <input id="hashOut" class="input mono" type="text" placeholder="0x..." readonly />
+          </div>
+
+          <div class="field">
+            <button id="btnCopy" class="btn" type="button">Copy hash</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="row-text">
+        <h2 class="h2">2) Approve on Cardano</h2>
+        <p class="muted">Approve and sign the transaction.</p>
+
+        <div class="chain-actions mt-2">
+          <button id="btnCardanoConnect" class="btn" type="button">Connect Cardano</button>
+          <button class="btn primary" type="button" id="btnApprove" disabled>Approve</button>
+          <button class="btn primary" type="button" id="btnCheckSignature" disabled>Check signature</button>
+        </div>
+        <div class="chain-log mono mt-2" id="chainLog">—</div>
+
+    </section>
+  </main>
+
+
+  <script src="../../js/approve_cardano.js" type="module"></script>
+</body>
+
+</html>

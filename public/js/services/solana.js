@@ -90,7 +90,11 @@ export class SolanaService {
     return info !== null;
   }
 
-  async isApproved(docHashHex, userPubkey) {
+  async isApproved(docHashHex) {
+    const userPubkey = this.provider.wallet.publicKey;
+
+    if (userPubkey == null) throw new Error("Not connected");
+
     const approvalPda = await this.deriveApprovalPda(docHashHex, userPubkey);
     const info = await this.connection.getAccountInfo(approvalPda);
     return info !== null;

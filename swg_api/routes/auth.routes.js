@@ -5,6 +5,7 @@ import { CONFIG } from "../../config/project.config.js";
 
 const authRouter = express.Router();
 const JWT_SECRET = CONFIG.security.jwtSecret;
+const JWT_DOMAIN = CONFIG.security.jwtDomain;
 
 authRouter.get("/me", (req, res) => {
   try {
@@ -39,8 +40,8 @@ authRouter.post("/login", (req, res) => {
   // Set JWT in Cookie
 
   res.setHeader("Set-Cookie", [
-    `swg_token=${token}; HttpOnly; Path=/; SameSite=Lax; Max-Age=1800`,
-    `swg_logged_in=1; Path=/; SameSite=Lax; Max-Age=1800`
+    `swg_token=${token}; HttpOnly; Path=/; SameSite=None; Secure; Domain=.${JWT_DOMAIN};  Max-Age=1800`,
+    `swg_logged_in=1; Path=/; SameSite=None; Secure; Domain=.${JWT_DOMAIN};  Max-Age=1800`
   ]);
   
 
@@ -49,8 +50,8 @@ authRouter.post("/login", (req, res) => {
 
 authRouter.post("/logout", (req, res) => {
   res.setHeader("Set-Cookie", [
-    `swg_token=; HttpOnly; Path=/; SameSite=Lax; Max-Age=0`,
-    `swg_logged_in=; Path=/; SameSite=Lax; Max-Age=0`
+    `swg_token=; HttpOnly; Path=/; SameSite=None; Secure; Domain=.${JWT_DOMAIN}; Max-Age=0`,
+    `swg_logged_in=; Path=/; SameSite=None; Secure; Domain=.${JWT_DOMAIN}; Max-Age=0`
   ]);
   res.json({ ok: true });
 });

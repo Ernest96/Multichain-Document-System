@@ -14,6 +14,7 @@ export const CONFIG = {
     idlDestName: "solana_idl.json",
   },
   security: {
+    jwtDomain: process.env.JWT_DOMAIN,
     jwtSecret: process.env.JWT_SECRET,
     adminLogin: process.env.ADMIN_LOGIN,
     adminPassword: process.env.ADMIN_PASSWORD,
@@ -21,6 +22,7 @@ export const CONFIG = {
   swgApi: {
     host: process.env.SWG_API_HOST,
     port: Number(process.env.SWG_API_PORT),
+    origin: getSwgApiOrigin(),
     cors: {
       allowOriginsExtra: [],
       allowMethods: ["GET", "POST", "OPTIONS"],
@@ -31,11 +33,15 @@ export const CONFIG = {
   swg: {
     host: process.env.SWG_HOST,
     port: Number(process.env.SWG_PORT),
+    origin: getSwgOrigin(),
+    coop: "same-origin-allow-popups",
+    coep: "require-corp",
+    corp: "same-origin",
     csp: {
       base: {
         directives: {
           defaultSrc: ["'self'"],
-          scriptSrc: ["'self'", "https://esm.sh"],
+          scriptSrc: ["'self'"],
           imgSrc: ["'self'", "data:"],
           styleSrc: ["'self'", "https://fonts.googleapis.com"],
           fontSrc: ["'self'", "https://fonts.gstatic.com"],
@@ -43,18 +49,41 @@ export const CONFIG = {
           baseUri: ["'none'"],
           frameAncestors: ["'none'"],
         },
-        connectSrc: [
-          "https://sepolia.infura.io",
-          "https://api.devnet.solana.com",
-          "https://esm.sh",
-          "wss://api.devnet.solana.com/"
-        ],
+        connectSrc: [],
       },
       // route specific CSP
       routes: {
-        "/": {
-          connectAdd: [],
+        "/pages/anchor": {
+          connectAdd: [
+            "https://sepolia.infura.io",
+            "https://api.devnet.solana.com",
+            "https://esm.sh",
+            "wss://api.devnet.solana.com/",
+          ],
+          scriptAdd: ["https://esm.sh"]
+        },
+        "/pages/verify": {
+          connectAdd: [
+            "https://sepolia.infura.io",
+            "https://api.devnet.solana.com",
+            "https://esm.sh",
+            "wss://api.devnet.solana.com/",
+          ],
+          scriptAdd: ["https://esm.sh"]
+        },
+        "/pages/approve/ethereum": {
+          connectAdd: [
+            "https://sepolia.infura.io",
+          ],
           scriptAdd: []
+        },
+        "/pages/approve/solana": {
+          connectAdd: [
+            "https://api.devnet.solana.com",
+            "https://esm.sh",
+            "wss://api.devnet.solana.com/"
+          ],
+          scriptAdd: ["https://esm.sh"]
         },
       },
       // role specific CSP
@@ -76,3 +105,19 @@ export const CONFIG = {
     },
   },
 };
+
+function getSwgOrigin() {
+  const origin = process.env.SWG_LIVE == 0 ?
+    `${process.env.SWG_HOST}:${process.env.SWG_PORT}` :
+    process.env.SWG_HOST;
+
+  return origin;
+}
+
+function getSwgApiOrigin() {
+  const origin = process.env.SWG_LIVE == 0 ?
+    `${process.env.SWG_API_HOST}:${process.env.SWG_API_PORT}` :
+    process.env.SWG_API_HOST;
+
+  return origin;
+}

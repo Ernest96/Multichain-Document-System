@@ -7,6 +7,8 @@ const ETH_CHAIN_ID_HEX = CONFIG_PUBLIC.ethereum.chainIdHex;
 
 const ABI = [
   "function anchorDocument(bytes32 docHash) external",
+  "function approveDocument(bytes32 docHash) external",
+  "function isApproved(bytes32 docHash, address user) view returns (bool)",
   "function isAnchored(bytes32 docHash) view returns (bool)",
   "function owner() view returns (address)"
 ];
@@ -65,7 +67,7 @@ export class EthereumService {
 
   async connect() {
     if (!window.ethereum) {
-      throw new Error("MetaMask not installed");
+      throw new Error("EVM Wallet not installed");
     }
 
     let pickedEvm = await pickEvmProvider();
@@ -89,13 +91,30 @@ export class EthereumService {
 
 
   async anchor(docHash) {
-    if (!this.contract) throw new Error("Not connected");
+    if (!this.signer) throw new Error("Not connected");
 
     const tx = await this.contract.anchorDocument(docHash);
+    return await tx.wait();
+  }
+
+  async approve(docHash) {
+    if (!this.signer) throw new Error("Not connected");
+
+    const tx = await this.contract.approveDocument(docHash);
     return await tx.wait();
   }
 
   async isAnchored(docHash) {
     return await this.contract.isAnchored(docHash);
   }
+
+  async isApproved(docHash) {
+    const addr = await this.signer.getAddress();
+
+    if (!addr) throw new Error("User address required");
+
+    return await this.contract.isApproved(docHash, addr);
+  }
+
+
 }

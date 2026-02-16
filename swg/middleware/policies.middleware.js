@@ -34,7 +34,7 @@ function roleFromCookie(req) {
 function resolveConnectSrc(path, role) {
   const csp = swg.csp;
 
-  const apiOrigin = `${swgApi.host}:${swgApi.port}`;
+  const apiOrigin = CONFIG.swgApi.origin;
 
   const base = [
     "'self'",
@@ -110,10 +110,10 @@ export function setSecurityHeaders(req, res, next) {
 
   res.setHeader("Content-Security-Policy", buildCspHeader({ connectSrc, scriptSrc }));
 
-  // COOP / COEP / CORP (keep your current settings)
-  res.setHeader("Cross-Origin-Opener-Policy", "same-origin-allow-popups");
-  res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
-  res.setHeader("Cross-Origin-Resource-Policy", "same-origin");
+ // COOP / COEP / CORP (keep your current settings)
+  res.setHeader("Cross-Origin-Opener-Policy", CONFIG.swg.coop);
+  res.setHeader("Cross-Origin-Embedder-Policy", CONFIG.swg.coep);
+  res.setHeader("Cross-Origin-Resource-Policy", CONFIG.swg.corp);
 
   // Hardening
   res.setHeader("X-Content-Type-Options", "nosniff");

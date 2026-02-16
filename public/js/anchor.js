@@ -96,7 +96,7 @@ btnCopy.addEventListener("click", async () => {
 // ETH connect button
 btnEthConnect.addEventListener("click", async () => {
   try {
-    setEthUI("Connecting MetaMask…", "warn");
+    setEthUI("Connecting Wallet…", "warn");
     const addr = await ethService.connect();
     ethConnected = true;
 
