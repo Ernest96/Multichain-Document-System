@@ -7,7 +7,7 @@ services:
     env_file:
       - ./config/.env
     ports:
-      - "3001:3001"
+      - "3003:3003"
 
   swg:
     build:
@@ -17,5 +17,5 @@ services:
     depends_on:
       - swg_api
     ports:
-      - "3000:3000"
+      - "3002:3002"
 
