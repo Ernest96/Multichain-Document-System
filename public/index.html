@@ -38,43 +38,9 @@
             </div>
         </header>
 
-        <!-- SECTION 1 -->
         <section class="step">
             <div class="row-text">
-                <h2 class="h2">1) Anchor a document</h2>
-                <p class="muted">
-                    Upload a file (PDF/JSON/TXT), compute its SHA-256 hash locally in the browser, then anchor the hash
-                    on-chain. (Admin only)
-                </p>
-                <a class="btn primary mt-2" href="pages/anchor/">Anchor Document</a>
-            </div>
-
-            <div class="row-visual">
-                <img class="step-img" src="images/anchor.png" />
-            </div>
-        </section>
-
-        <!-- SECTION 2 -->
-        <section class="step reverse">
-            <div class="row-visual">
-                <img class="step-img" src="images/verify.png" />
-            </div>
-            <div class="row-text">
-                <h2 class="h2">2) Verify document anchor status</h2>
-                <p class="muted">
-                    Recompute the hash from the uploaded document and compare it with anchored hashes retrieved from
-                    each chain.
-                </p>
-
-                <a class="btn primary mt-2" href="/pages/verify">Verify Document</a>
-            </div>
-
-
-        </section>
-
-        <section class="step">
-            <div class="row-text">
-                <h2 class="h2">3) Approve a document</h2>
+                <h2 class="h2">Approve a document</h2>
                 <p class="muted">
                     Users record an acknowledgment on a selected chain. One approval is enough.
                 </p>
@@ -114,6 +80,41 @@
         </section>
 
 
+        <section class="step reverse">
+            <div class="row-visual">
+                <img class="step-img" src="images/verify.png" />
+            </div>
+            <div class="row-text">
+                <h2 class="h2">Verify document anchor status</h2>
+                <p class="muted">
+                    Recompute the hash from the uploaded document and compare it with anchored hashes retrieved from
+                    each chain.
+                </p>
+
+                <a class="btn primary mt-2" href="/pages/verify">Verify Document</a>
+            </div>
+
+        </section>
+
+        <section class="step">
+            <div class="row-text">
+                <h2 class="h2">Anchor a document (admin only)</h2>
+                <p class="muted">
+                    Upload a file (PDF/JSON/TXT), compute its SHA-256 hash locally in the browser, then anchor the hash
+                    on-chain. (Admin only)
+                </p>
+                <a class="btn primary mt-2" href="pages/anchor/">Anchor Document</a>
+            </div>
+
+            <div class="row-visual">
+                <img class="step-img" src="images/anchor.png" />
+            </div>
+        </section>
+
+
+
+
+
         <footer class="footer">
             <div>© Multichain Documents Approval</div>
         </footer>
@@ -144,7 +145,7 @@
         </div>
 
     </main>
-    
+
     <script src="js/app.js" type="module"></script>
 
 </body>
