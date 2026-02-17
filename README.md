@@ -6,7 +6,7 @@ A practical demonstration of interoperable multichain applications using a Seman
 
 Live demo: [https://documents.ernestbitca.com/](https://documents.ernestbitca.com/) 
 
-![image](https://github.com/user-attachments/assets/58d4cffb-adb5-4d2a-90bf-6bf7695d8489)
+![image](https://github.com/user-attachments/assets/fda62470-6303-46c3-9890-c98199fddf5b)
 
 
 
