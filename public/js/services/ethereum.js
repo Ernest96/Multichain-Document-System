@@ -32,9 +32,10 @@ export class EthereumService {
     this.evm = null;
     this.provider = null;
     this.signer = null;
+    this.contract = null;
 
-    const rp = new ethers.JsonRpcProvider(ETH_RPC_URL);
-    this.contract = new ethers.Contract(ETH_CONTRACT_ADDRESS, ABI, rp);
+    this.rp = new ethers.JsonRpcProvider(ETH_RPC_URL);
+    this.readContract = new ethers.Contract(ETH_CONTRACT_ADDRESS, ABI, this.rp);
   }
 
   async ensureNetwork() {
@@ -93,6 +94,8 @@ export class EthereumService {
   async anchor(docHash) {
     if (!this.signer) throw new Error("Not connected");
 
+    await this.ensureNetwork();
+
     const tx = await this.contract.anchorDocument(docHash);
     return await tx.wait();
   }
@@ -100,19 +103,22 @@ export class EthereumService {
   async approve(docHash) {
     if (!this.signer) throw new Error("Not connected");
 
+    await this.ensureNetwork();
+
     const tx = await this.contract.approveDocument(docHash);
     return await tx.wait();
   }
 
   async isAnchored(docHash) {
-    return await this.contract.isAnchored(docHash);
+    return await this.readContract.isAnchored(docHash);
   }
 
   async isApproved(docHash) {
+
     const addr = await this.signer.getAddress();
 
     if (!addr) throw new Error("User address required");
 
-    return await this.contract.isApproved(docHash, addr);
+    return await this.readContract.isApproved(docHash, addr);
   }
 }

@@ -59,16 +59,6 @@ export const CONFIG = {
       },
       // route specific CSP
       routes: {
-        "/pages/anchor": {
-          connectAdd: [
-            "https://sepolia.infura.io",
-            "https://api.devnet.solana.com",
-            "https://esm.sh",
-            "wss://api.devnet.solana.com/",
-            "https://sepolia.infura.io/v3/",
-          ],
-          scriptAdd: ["https://esm.sh"]
-        },
         "/pages/verify": {
           connectAdd: [
             "https://sepolia.infura.io",
@@ -109,10 +99,16 @@ export const CONFIG = {
       },
       // route + role specific CSP
       routeRoles: {
-        "/": {
+        "/pages/anchor": {
           admin: {
-            connectAdd: [],
-            scriptAdd: []
+            connectAdd: [
+              "https://sepolia.infura.io",
+              "https://api.devnet.solana.com",
+              "https://esm.sh",
+              "wss://api.devnet.solana.com/",
+              "https://rpc-amoy.polygon.technology"
+            ],
+            scriptAdd: ["https://esm.sh"]
           },
         },
       },

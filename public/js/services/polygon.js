@@ -33,8 +33,8 @@ export class PolygonService {
     this.provider = null;
     this.signer = null;
 
-    const rp = new ethers.JsonRpcProvider(POL_RPC_URL);
-    this.contract = new ethers.Contract(POL_CONTRACT_ADDRESS, ABI, rp);
+    this.rp = new ethers.JsonRpcProvider(POL_RPC_URL);
+    this.readContract = new ethers.Contract(POL_CONTRACT_ADDRESS, ABI, this.rp);
   }
 
   async ensureNetwork() {
@@ -93,6 +93,8 @@ export class PolygonService {
   async anchor(docHash) {
     if (!this.signer) throw new Error("Not connected");
 
+    await this.ensureNetwork();
+
     const tx = await this.contract.anchorDocument(docHash);
     return await tx.wait();
   }
@@ -100,12 +102,14 @@ export class PolygonService {
   async approve(docHash) {
     if (!this.signer) throw new Error("Not connected");
 
+    await this.ensureNetwork();
+
     const tx = await this.contract.approveDocument(docHash);
     return await tx.wait();
   }
 
   async isAnchored(docHash) {
-    return await this.contract.isAnchored(docHash);
+    return await this.readContract.isAnchored(docHash);
   }
 
   async isApproved(docHash) {
@@ -113,6 +117,6 @@ export class PolygonService {
 
     if (!addr) throw new Error("User address required");
 
-    return await this.contract.isApproved(docHash, addr);
+    return await this.readContract.isApproved(docHash, addr);
   }
 }

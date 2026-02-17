@@ -18,6 +18,11 @@
 
 <body>
   <main class="container">
+    <div class="auth-zone">
+      <button id="openLoginBtn" class="btn" type="button" hidden>Login</button>
+      <button id="logoutBtn" class="btn" type="button" hidden>Logout</button>
+    </div>
+    
     <nav class="breadcrumb">
       <a href="../../">Home</a>
       <span class="separator">/</span>
@@ -77,9 +82,33 @@
         <div class="chain-log mono mt-2" id="chainLog">—</div>
 
     </section>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-overlay" data-close="1"></div>
+
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+        <div class="modal-head">
+          <h3 id="loginTitle">Admin Login</h3>
+          <button id="loginModalClose" class="icon-btn" type="button" aria-label="Close">✕</button>
+        </div>
+
+        <p class="muted small">Authenticate via SWG API.</p>
+
+        <div class="modal-body">
+          <input id="loginUser" class="input" placeholder="Username" autocomplete="username" />
+          <input id="loginPass" class="input" type="password" placeholder="Password" autocomplete="current-password" />
+        </div>
+
+        <div class="modal-actions">
+          <button id="loginCancelBtn" class="btn btn-ghost" type="button">Cancel</button>
+          <button id="loginBtn" class="btn" type="button">Login</button>
+        </div>
+      </div>
+    </div>
   </main>
 
-
+  <script src="../../js/app.js" type="module"></script>
   <script src="../../js/approve_eth.js" type="module"></script>
 </body>
 

@@ -22,12 +22,21 @@ body {
 .container {
     max-width: 1120px;
     margin: 0 auto;
-    padding: 56px 20px 44px;
+    padding: 20px 20px 44px;
 }
+
+.auth-zone {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 20px;
+}
+
 
 .mt-2 {
     margin-top: 20px;
 }
+
+
 
 .pill {
     display: inline-flex;
@@ -445,6 +454,86 @@ body {
   color: #666666 !important;
   cursor:not-allowed;
 }
+
+.modal-body .input {
+    max-width: 100%;
+}
+
+.hidden { display: none !important; }
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.modal-card {
+  position: relative;
+  width: min(300px, calc(100% - 28px));
+  margin: 10vh auto 0;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.8);
+  border: 1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.45);
+}
+
+.modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.modal-body {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+
+.icon-btn {
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.24);
+}
+
+.show {
+    display: inline-block !important;
+}
+
+#openLoginBtn {
+    display: none;
+}
+
+#logoutBtn {
+    display: none;
+}
+
 
 /* Responsive */
 @media (max-width: 980px) {
