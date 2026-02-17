@@ -38,6 +38,16 @@ function setBadge(badge, isAnchored) {
     badge.textContent = badgeText;
 }
 
+function setBadgesLoading() {
+    ethBadge.className = `badge`;
+    solBadge.className = `badge`;
+    polygonBadge.className = `badge`;
+
+    ethBadge.textContent = `Verifying...`;
+    solBadge.textContent = `Verifying...`;
+    polygonBadge.textContent = `Verifying...`;
+}
+
 function clearBadges() {
     ethBadge.className = "badge";
     solBadge.className = "badge";
@@ -80,6 +90,7 @@ btnVerify.addEventListener("click", async () => {
     try {
         const hash = hashOut.value.trim();
 
+        setBadgesLoading();
         const isEthAnchored = await ethService.isAnchored(hash);
         const isSolAnchored = await solService.isAnchored(hash);
         const isPolygonAnchored = await polService.isAnchored(hash);
@@ -89,6 +100,7 @@ btnVerify.addEventListener("click", async () => {
         setBadge(polygonBadge, isPolygonAnchored);
     } catch (err) {
         alert("Error verifying anchor status");
+        clearBadges();
         console.log(err.message);
     }
 });
