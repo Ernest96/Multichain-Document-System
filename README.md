@@ -133,6 +133,7 @@ swg: {
       // role specific CSP
       roles: {
         admin: {
+          riskLevel: "high",
           connectAdd: [],
           scriptAdd: []
         },

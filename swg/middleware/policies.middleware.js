@@ -28,13 +28,7 @@ function roleFromCookie(req) {
   }
 }
 
-/**
- * Resolve risk level with priority:
- * 1) routeRoles[pathMatch][role].riskLevel
- * 2) routes[pathMatch].riskLevel
- * 3) swg.defaultRiskLevel (optional)
- * 4) "medium"
- */
+
 function resolveRiskLevel(path, role) {
   const csp = swg.csp;
 
