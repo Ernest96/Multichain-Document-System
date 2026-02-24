@@ -40,9 +40,21 @@ export const CONFIG = {
     host: process.env.SWG_HOST,
     port: Number(process.env.SWG_PORT),
     origin: getSwgOrigin(),
-    coop: "same-origin-allow-popups",
-    coep: "require-corp",
-    corp: "same-origin",
+    coopBase: "unsafe-none",
+    coepBase: "unsafe-none",
+    corpBase: "cross-origin",
+    riskProfiles: {
+      low: {
+        coop: "unsafe-none",
+        coep: "unsafe-none",
+        corp: "cross-origin",
+      },
+      high: {
+        coop: "same-origin-allow-popups",
+        coep: "require-corp",
+        corp: "same-origin",
+      },
+    },
     csp: {
       base: {
         directives: {
@@ -59,7 +71,9 @@ export const CONFIG = {
       },
       // route specific CSP
       routes: {
+        
         "/pages/verify": {
+          riskLevel: "low",
           connectAdd: [
             "https://sepolia.infura.io",
             "https://api.devnet.solana.com",
@@ -70,24 +84,30 @@ export const CONFIG = {
           scriptAdd: ["https://esm.sh"]
         },
         "/pages/approve/ethereum": {
+          riskLevel: "high",
           connectAdd: [
             "https://sepolia.infura.io",
           ],
           scriptAdd: []
         },
         "/pages/approve/polygon": {
+          riskLevel: "high",
           connectAdd: [
             "https://rpc-amoy.polygon.technology",
           ],
           scriptAdd: []
         },
         "/pages/approve/solana": {
+          riskLevel: "high",
           connectAdd: [
             "https://api.devnet.solana.com",
             "https://esm.sh",
             "wss://api.devnet.solana.com/"
           ],
           scriptAdd: ["https://esm.sh"]
+        },
+        "/pages/anchor": {
+          riskLevel: "high", connectAdd: [], scriptAdd: []
         },
       },
       // role specific CSP
@@ -101,6 +121,7 @@ export const CONFIG = {
       routeRoles: {
         "/pages/anchor": {
           admin: {
+            riskLevel: "high",
             connectAdd: [
               "https://sepolia.infura.io",
               "https://api.devnet.solana.com",
