@@ -1,5 +1,19 @@
 # Multichain Document Registry — Semantic Web Gateway Demo
 
+## Authors
+
+- **Ernest Bîtca¹**  
+- **Dumitru Ciorbă¹**  
+- **Ana Țurcan¹**  
+- **Ciprian Dobre²**  
+
+## Affiliations
+
+¹ Technical University of Moldova, Chișinău  
+² National University of Science and Technology POLITEHNICA Bucharest  
+
+##
+
 A practical demonstration of interoperable multichain applications using a Semantic Web Gateway (SWG) architecture in context of a documental approval system.
 
 
