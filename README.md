@@ -113,7 +113,7 @@ swg: {
             "https://api.devnet.solana.com",
             "https://esm.sh",
             "wss://api.devnet.solana.com/",
-            "https://rpc-amoy.polygon.technology"
+            "https://polygon-amoy.drpc.org"
           ],
           scriptAdd: ["https://esm.sh"]
         },
@@ -127,7 +127,7 @@ swg: {
         "/pages/approve/polygon": {
           riskLevel: "high",
           connectAdd: [
-            "https://rpc-amoy.polygon.technology",
+            "https://polygon-amoy.drpc.org",
           ],
           scriptAdd: []
         },
@@ -162,7 +162,7 @@ swg: {
               "https://api.devnet.solana.com",
               "https://esm.sh",
               "wss://api.devnet.solana.com/",
-              "https://rpc-amoy.polygon.technology"
+              "https://polygon-amoy.drpc.org"
             ],
             scriptAdd: ["https://esm.sh"]
           },

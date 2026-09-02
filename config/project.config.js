@@ -14,7 +14,7 @@ export const CONFIG = {
     idlDestName: "solana_idl.json",
   },
   polygon: {
-    rpcUrl: "https://rpc-amoy.polygon.technology",
+    rpcUrl: "https://polygon-amoy.drpc.org",
     privateKey: process.env.POL_PRIVATE_KEY,
     contractAddress: "0x3960073a8a747555C81975e841da2b5b85c39fdF",
     chainIdHex: "0x13882"
@@ -79,7 +79,7 @@ export const CONFIG = {
             "https://api.devnet.solana.com",
             "https://esm.sh",
             "wss://api.devnet.solana.com/",
-            "https://rpc-amoy.polygon.technology"
+            "https://polygon-amoy.drpc.org"
           ],
           scriptAdd: ["https://esm.sh"]
         },
@@ -93,7 +93,7 @@ export const CONFIG = {
         "/pages/approve/polygon": {
           riskLevel: "high",
           connectAdd: [
-            "https://rpc-amoy.polygon.technology",
+            "https://polygon-amoy.drpc.org",
           ],
           scriptAdd: []
         },
@@ -128,7 +128,7 @@ export const CONFIG = {
               "https://api.devnet.solana.com",
               "https://esm.sh",
               "wss://api.devnet.solana.com/",
-              "https://rpc-amoy.polygon.technology"
+              "https://polygon-amoy.drpc.org"
             ],
             scriptAdd: ["https://esm.sh"]
           },
