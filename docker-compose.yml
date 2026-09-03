@@ -8,6 +8,8 @@ services:
       - ./config/.env
     ports:
       - "3003:3003"
+    restart: unless-stopped
+
 
   swg:
     build:
@@ -18,4 +20,6 @@ services:
       - swg_api
     ports:
       - "3002:3002"
+    restart: unless-stopped
+    
 
